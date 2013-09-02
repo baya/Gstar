@@ -1,0 +1,20 @@
+GIT
+  remote: git://github.com/baya/ground.git
+  revision: bd4f89f0073ccdd71efa518ef847e31320333380
+  specs:
+    ground (0.0.1)
+      dun
+      rack
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    dun (0.1.1)
+    rack (1.5.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  dun
+  ground!
