@@ -30,6 +30,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-size:13px;
+	line-height:1.231;
 }
 ol, ul {
 	list-style: none;
@@ -48,3 +50,112 @@ table {
 }
 
 /* app css stylesheet */
+body{
+    font-family: proxima-nova, "Helvetica Neue", Arial, sans-serif;
+}
+a:link, a:visited{
+    color:#333;
+}
+a{
+    text-decoration:none;
+}
+.header{
+    padding-top:35px;
+    margin-left:55px;
+}
+
+.logo{
+    font-size:25px;
+    float:left;
+    margin-right:5px;
+    text-align:center;
+    padding: 0 3px;
+}
+
+.search-bar{
+    float:left;
+}
+
+.btn{
+    display:inline-block;
+    padding:6px 12px;
+    margin-bottom:0;
+    font-weight:normal;
+    text-align:center;
+    vertical-align:center;
+    cursor:pointer;
+    border:1px solid transparent;
+}
+
+.btn:hover, .btn:focus{
+    color: #333333;
+    text-decoration:none;
+}
+
+.btn-default:hover{
+    color: #333333;
+    background-color: #ebebeb;
+    border-color:#adadad;
+}
+
+.btn-default{
+    background-color: #ffffff;
+    border-color:#cccccc;
+}
+
+.clear{clear:both;}
+
+.content{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+ol {
+    list-style:none;
+    counter-reset:li;
+}
+
+
+#main-input{
+    width:560px;
+    height:22px;
+}
+
+ol#stars{
+    padding: 18px 0 30px;
+    list-style-type:none;
+}
+
+ol#stars li{
+    margin-bottom:25px;
+}
+
+ol#stars article{
+    z-index:0;
+    padding-top: 3px;
+    width:100%;
+}
+
+ol#stars h1{
+    font-size:19px;
+    line-height:1em;
+    display:inline;
+}
+
+ol#stars header{
+    margin-left: 77px;
+    font-family: chaparral-pro, Palatino, Georgia, "Times New Roman", Times, serif;
+}
+
+ol#stars p{
+    margin-left: 77px;
+    width:31.5%;
+    font-size: 14px;
+    padding-top: 2px;
+}
+
+ol#stars a{
+    text-decoration:underline;
+    color:#1b00a6;
+}
+
