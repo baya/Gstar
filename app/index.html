@@ -9,7 +9,7 @@
     <div class='header'>
       <strong class='logo'>G<span class='star'>*</span></strong>
       <div class='search-bar'>
-	<form action='' method='GET'>
+	<form ng-submit='index()' ng-controller='SearchStars'>
 	  <input type='text' value='' name='q' id='main-input'/>
 	  <button class='btn btn-default'>Search</button>
 	</form>
@@ -66,7 +66,7 @@
 
     <div ng-view></div>
 
-    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular/angular.min.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/services.js"></script>
     <script src="/js/controllers.js"></script>

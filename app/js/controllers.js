@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+angular.module('gStar.controllers', []).
+  controller('StarsCtrl10', [function() {
 
   }])
   .controller('MyCtrl2', [function() {
