@@ -1,71 +1,25 @@
 <!doctype html>
-<html lang="en" ng-app="Gstar">
+<html lang="en" ng-app="gStar">
   <head>
     <meta charset="utf-8">
     <title>Gstar</title>
     <link rel="stylesheet" href="/css/app.css"/>
   </head>
   <body>
+    
     <div class='header'>
       <strong class='logo'>G<span class='star'>*</span></strong>
       <div class='search-bar'>
-	<form ng-submit='index()' ng-controller='SearchStars'>
-	  <input type='text' value='' name='q' id='main-input'/>
-	  <button class='btn btn-default'>Search</button>
+	<form ng-submit="submit()" ng-controller="SearchStarsCtrl">
+	  <input type='text' ng-model='q' name='q' id='main-input'/>
+	  <input class='btn btn-default' type="submit" id="submit" value="Search" />
 	</form>
       </div>
     </div>
-
     <div class='clear'></div>
-    <div class='content'>
-      <ol id='stars'>
-	<li class='star'>
-	  <article>
-	    <header><a href=''><h1>Ground</h1></a></header>
-	    <p>Ground is a web framworkGround is a web framworkGround is a web framworkGround is a web framworkGround is a web framwork</p>
-          </article>
-        </li>
-	<li class='star'>
-	  <article>
-	    <header>
-	      <a href=''><h1>Ground</h1></a>
-	    </header>
-	    <p>Ground is a web framwork</p>
-          </article>
-        </li>
-
-	<li class='star'>
-	  <article>
-	    <header><a href=''><h1>Ground</h1></a></header>
-	    <p>Ground is a web framwork，很好用的web框架</p>
-          </article>
-        </li>
-
-	<li class='star'>
-	  <article>
-	    <header><a href=''><h1>Ground</h1></a></header>
-	    <p>Ground is a web framwork</p>
-          </article>
-        </li>
-
-	<li class='star'>
-	  <article>
-	    <header><a href=''><h1>Ground</h1></a></header>
-	    <p>Ground is a web framwork</p>
-          </article>
-        </li>
-
-	<li class='star'>
-	  <article>
-	    <header><a href=''><h1>Ground</h1></a></header>
-	    <p>Ground is a web framwork</p>
-          </article>
-        </li>
-      </ol>
-    </div>
-
+    
     <div ng-view></div>
-
+    
     <script src="/lib/angular/angular.min.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/services.js"></script>
