@@ -10,8 +10,8 @@
     <div class='header'>
       <strong class='logo'>G<span class='star'>*</span></strong>
       <div class='search-bar'>
-	<form action='/stars' method='get'>
-	  <input type='text' name='q' id='main-input'/>
+	<form ng-submit='submit()' ng-controller='SearchFormCtrl'>
+	  <input type='text' ng-model='q' name='q' id='main-input'/>
 	  <input class='btn btn-default' type="submit" value="Search" />
 	</form>
       </div>
