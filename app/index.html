@@ -10,9 +10,9 @@
     <div class='header'>
       <strong class='logo'>G<span class='star'>*</span></strong>
       <div class='search-bar'>
-	<form ng-submit="submit()" ng-controller="SearchStarsCtrl">
-	  <input type='text' ng-model='q' name='q' id='main-input'/>
-	  <input class='btn btn-default' type="submit" id="submit" value="Search" />
+	<form action='/stars' method='get'>
+	  <input type='text' name='q' id='main-input'/>
+	  <input class='btn btn-default' type="submit" value="Search" />
 	</form>
       </div>
     </div>
@@ -21,6 +21,7 @@
     <div ng-view></div>
     
     <script src="/lib/angular/angular.min.js"></script>
+    <script src="/lib/angular/angular-resource.min.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/services.js"></script>
     <script src="/js/controllers.js"></script>

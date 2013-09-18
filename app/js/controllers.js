@@ -3,19 +3,8 @@
 /* Controllers */
 
 angular.module('gStar.controllers', []).
-    controller('StarsCtrl', [function() {
-    }])
-    .controller('SearchStarsCtrl', ['$scope', function($scope){
-	$scope.q = '';
-	$scope.submit = function(){
-	    if (this.q){
-		alert(this.q);
-	    } else {
-		alert('OK');
-	    }
-	    
-	}
-    }])
-    .controller('MyCtrl2', [function() {
-
+    controller('StarsCtrl', ['$scope', '$routeParams', 'SearchStars', function($scope, $routeParams, SearchStars){
+	$scope.stars = SearchStars.get({q: $routeParams.q});
+    }]).
+    controller('MyCtrl2', [function() {
     }]);
