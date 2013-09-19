@@ -1,8 +1,18 @@
+
 task :env do
   $: << '.' unless $:.include? '.'
   require 'gstar'
   require 'pp'
   require 'base64'
+end
+
+desc 'Run Console'
+task :console => :env do |t, args|
+  puts "Loading #{Ground.env} environment"
+  require "irb"
+  require 'irb/completion'
+  ARGV.clear
+  IRB.start
 end
 
 namespace :maintain do
@@ -18,3 +28,11 @@ namespace :debug do
     pp res.size
   end
 end
+
+namespace :db do
+  task :migrate => :env do
+    Sequel.extension :migration, :core_extensions
+    Sequel::Migrator.run Gstar::DB, 'db/migrations', use_transactions: true
+  end
+end
+

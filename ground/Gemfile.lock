@@ -1,12 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    coderay (1.0.9)
     dun (0.1.1)
     json (1.8.0)
+    method_source (0.8.2)
     mime-types (1.25)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.5.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    sequel (4.1.1)
+    slop (3.4.6)
+    sqlite3 (1.3.7)
 
 PLATFORMS
   ruby
@@ -14,5 +23,8 @@ PLATFORMS
 DEPENDENCIES
   dun
   json
+  pry
   rack
   rest-client
+  sequel
+  sqlite3
