@@ -2,11 +2,17 @@ GEM
   remote: https://rubygems.org/
   specs:
     dun (0.1.1)
+    json (1.8.0)
+    mime-types (1.25)
     rack (1.5.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   dun
+  json
   rack
+  rest-client

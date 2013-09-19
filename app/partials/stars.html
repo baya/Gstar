@@ -1,45 +1,9 @@
 <div class='content'>
   <ol id='stars'>
-    <li class='star'>
+    <li ng-repeat="star in stars" class='star'>
       <article>
-	<header><a href=''><h1>Ground</h1></a></header>
-	<p>Ground is a web framworkGround is a web framworkGround is a web framworkGround is a web framworkGround is a web framwork</p>
-      </article>
-    </li>
-    <li class='star'>
-      <article>
-	<header>
-	  <a href=''><h1>Ground</h1></a>
-	</header>
-	<p>Ground is a web framwork</p>
-      </article>
-    </li>
-
-    <li class='star'>
-      <article>
-	<header><a href=''><h1>Ground</h1></a></header>
-	<p>Ground is a web framwork，很好用的web框架</p>
-      </article>
-    </li>
-
-    <li class='star'>
-      <article>
-	<header><a href=''><h1>Ground</h1></a></header>
-	<p>Ground is a web framwork</p>
-      </article>
-    </li>
-
-    <li class='star'>
-      <article>
-	<header><a href=''><h1>Ground</h1></a></header>
-	<p>Ground is a web framwork</p>
-      </article>
-    </li>
-
-    <li class='star'>
-      <article>
-	<header><a href=''><h1>Ground</h1></a></header>
-	<p>Ground is a web framwork</p>
+	<header><a href='{{star.link}}'><h1>{{star.title}}</h1></a></header>
+	<p>{{star.description}}</p>
       </article>
     </li>
   </ol>

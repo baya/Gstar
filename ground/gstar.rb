@@ -5,12 +5,15 @@ require 'bundler'
 Bundler.require(:default)
 require 'ground'
 
-require 'states/home'
-require 'config/routes'
 require 'config/sets'
+require 'states/home'
+require 'states/stars/index'
+require 'lib/github_api'
+require 'lib/github_api/list_starred_repos'
+require 'config/routes'
 
 module Gstar
-  App = Ground 'gstar' do
+  App = Ground 'gStar' do
     use Rack::ShowExceptions
     use Rack::Static, urls: ['/js', '/css', '/lib', '/partials', '/img'], root: "#{Ground.root}/app"
   end

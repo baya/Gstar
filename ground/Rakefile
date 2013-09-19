@@ -1,0 +1,18 @@
+task :env do
+  $: << '.' unless $:.include? '.'
+  require 'gstar'
+  require 'pp'
+  require 'base64'
+end
+
+namespace :maintain do
+  task :pull_stars_from_github => :env do
+  end
+end
+
+namespace :debug do
+  task :list_starred_repos => :env do
+    res = GithubAPI::ListStarredRepos()
+    pp res
+  end
+end
