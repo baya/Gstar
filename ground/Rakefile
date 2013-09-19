@@ -13,6 +13,8 @@ end
 namespace :debug do
   task :list_starred_repos => :env do
     res = GithubAPI::ListStarredRepos()
+    res = JSON.parse res
     pp res
+    pp res.size
   end
 end
