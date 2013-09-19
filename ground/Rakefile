@@ -17,6 +17,14 @@ end
 
 namespace :maintain do
   task :pull_stars_from_github => :env do
+    res = GithubAPI::ListStarredRepos()
+    stars = JSON.parse res
+    stars.each {|star|
+      pulled_star = Gstar::DB[:stars].where(source_id: "github_#{star['id']}").first
+      if pulled_star.nil?
+        InsertStarFromGithub star
+      end
+    }
   end
 end
 
