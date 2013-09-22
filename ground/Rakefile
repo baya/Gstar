@@ -45,6 +45,7 @@ namespace :maintain do
     }
   end
 
+  desc 'build full text serach index'
   task :build_full_text_index => :env do
     Gstar::DB[:stars].each {|star|
       BuildInvertedStarIndex(star: star)

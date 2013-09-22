@@ -15,8 +15,12 @@ class BuildInvertedStarIndex < Dun::Activity
       else
         dic_id = dic[:id]
       end
-      tf = words.count(word)
-      dic_star_set.insert(dic_id: dic_id, star_id: star[:id], tf: tf)
+      
+      dic_star = dic_star_set.where(dic_id: dic_id, star_id: star[:id]).first
+      if dic_star.nil?
+        tf = words.count(word)
+        dic_star_set.insert(dic_id: dic_id, star_id: star[:id], tf: tf)
+      end
     }
   end
   

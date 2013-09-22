@@ -18,7 +18,7 @@ module Stars
     def query_star_sql(q)
       dic = db[:dics].where(word: q).first || {}
       sql = <<-EOF
-        select stars.full_name, stars.description from stars
+        select stars.full_name, stars.description, stars.html_url from stars
         join dic_stars on stars.id = dic_stars.star_id
         join dics on dic_stars.dic_id = dics.id
         where dics.id = #{dic[:id]}
