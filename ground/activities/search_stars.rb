@@ -11,7 +11,7 @@ class SearchStars < Dun::Activity
 
   def sql
     sql = <<-EOF
-      select stars.full_name, stars.description, stars.html_url
+      select stars.full_name, stars.description, stars.html_url, q_star_assocs.score
       from stars
       join q_star_assocs on stars.id = q_star_assocs.star_id
       where q_star_assocs.q = ?

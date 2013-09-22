@@ -20,6 +20,7 @@ require 'config/routes'
 
 module Gstar
   DB = Ground.db
+  DB.loggers << Ground.logger
   App = Ground 'gStar' do
     use Rack::ShowExceptions
     use Rack::Static, urls: ['/js', '/css', '/lib', '/partials', '/img'], root: "#{Ground.root}/app"

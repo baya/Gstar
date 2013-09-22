@@ -4,20 +4,19 @@ class AccQStarAssoc < Dun::Activity
   set :db, Ground.db
 
   def call
+    assoc = db[:q_star_assocs].where(q: q, star_id: star[:id]).first
+    score = star[:tf].to_i
+    score = 1 if score = 0
     if assoc
-      acc_assoc_score star[:tf].to_i
+      acc_assoc_score assoc, score
     else
-      db[:q_star_assocs].insert(q: q, star_id: star[:id], score: star[:tf].to_i)
+      db[:q_star_assocs].insert(q: q, star_id: star[:id], score: score)
     end
   end
 
   private
 
-  def assoc
-    @assoc ||= db[:q_star_assocs].where(q: q, star_id: star[:id]).first
-  end
-
-  def acc_assoc_score(score)
+  def acc_assoc_score(assoc, score)
     db[:q_star_assocs].where(id: assoc[:id]).update(score: (assoc[:score] + score) * 2)
   end
   

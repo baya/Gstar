@@ -4,7 +4,7 @@
 
 angular.module('gStar.controllers', []).
     controller('SearchFormCtrl', ['$scope', '$location', function($scope, $location){
-	$scope.q = '';
+	$scope.q = $location.search().q;
 	$scope.submit = function(){
 	    if(this.q){
 		$location.path('stars').search({q: this.q});
