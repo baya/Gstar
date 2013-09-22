@@ -7,11 +7,16 @@ class BuildInvertedStarIndex < Dun::Activity
 
   def call
     text = "#{star[:full_name]}\n#{star[:description]}"
+    index_text text
+    index_text text.downcase
+  end
+
+  def index_text(text)
     words = text.scan(/\w+/)
     words.each {|word|
       dic = dics_set.where(word: word).first
       if dic.nil?
-        dic_id = dics_set.insert word: word 
+        dic_id = dics_set.insert word: word
       else
         dic_id = dic[:id]
       end
@@ -22,6 +27,7 @@ class BuildInvertedStarIndex < Dun::Activity
         dic_star_set.insert(dic_id: dic_id, star_id: star[:id], tf: tf)
       end
     }
+
   end
   
 end
