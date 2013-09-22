@@ -32,6 +32,25 @@ namespace :maintain do
       break if stars.size == 0
     end
    end
+
+  task :sync_stars_from_github => :env do
+    res = GithubAPI::ListStarredRepos()
+    stars = JSON.parse res
+    stars.each {|star|
+      pulled_star = Gstar::DB[:stars].where(source_id: "github_#{star['id']}").first
+      if pulled_star.nil?
+        puts "sync the star #{star['full_name']}..."
+        InsertStarFromGithub star
+      end
+    }
+  end
+
+  task :build_full_text_index => :env do
+    Gstar::DB[:stars].each {|star|
+      BuildInvertedStarIndex(star: star)
+    }
+  end
+   
 end
 
 namespace :debug do
