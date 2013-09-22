@@ -8,7 +8,7 @@ module Stars
       scan_q_for_search params[:q]
       stars = find_stars params[:q]
       stars = stars.all
-      # clear_q_star_assocs params[:q]
+      clear_q_star_assocs params[:q]
       json stars.to_json
     end
 
