@@ -6,7 +6,7 @@ class AccQStarAssoc < Dun::Activity
   def call
     assoc = db[:q_star_assocs].where(q: q, star_id: star[:id]).first
     score = star[:tf].to_i
-    score = 1 if score = 0
+    score = 1 if score == 0
     if assoc
       acc_assoc_score assoc, score
     else

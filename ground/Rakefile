@@ -16,6 +16,7 @@ task :console => :env do |t, args|
 end
 
 namespace :maintain do
+  desc 'pull stars from github'
   task :pull_stars_from_github => :env do
     page = 0
     loop do
@@ -33,6 +34,7 @@ namespace :maintain do
     end
    end
 
+  desc 'sync stars from github, just recently starred projects'
   task :sync_stars_from_github => :env do
     res = GithubAPI::ListStarredRepos()
     stars = JSON.parse res
