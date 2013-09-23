@@ -6,6 +6,7 @@ require 'bundler'
 Bundler.require(:default)
 require 'ground'
 require 'logger'
+require 'yaml'
 
 require 'config/sets'
 require 'states/home'
