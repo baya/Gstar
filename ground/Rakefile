@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 task :env do
   $: << '.' unless $:.include? '.'
   require 'gstar'
@@ -36,15 +36,17 @@ namespace :maintain do
 
   desc 'sync stars from github, just recently starred projects'
   task :sync_stars_from_github => :env do
+    Ground.logger.info "--Start sync stars from github--#{Time.now}---"
     res = GithubAPI::ListStarredRepos()
     stars = JSON.parse res
     stars.each {|star|
       pulled_star = Gstar::DB[:stars].where(source_id: "github_#{star['id']}").first
       if pulled_star.nil?
-        puts "sync the star #{star['full_name']}..."
+        Ground.logger.info "sync the star #{star['full_name']}..."
         InsertStarFromGithub star
       end
     }
+    Ground.logger.info "--End sync stars from github--#{Time.now}---"
   end
 
   desc 'build full text serach index'
@@ -53,7 +55,7 @@ namespace :maintain do
       BuildInvertedStarIndex(star: star)
     }
   end
-   
+
 end
 
 namespace :debug do
@@ -70,5 +72,32 @@ namespace :db do
     Sequel.extension :migration, :core_extensions
     Sequel::Migrator.run Gstar::DB, 'db/migrations', use_transactions: true
   end
+end
+
+namespace :cron do
+  task :check_latest_stars => :env do
+    Ground.logger.info "--Start check latest stars from github--#{Time.now}---"
+    if need_sync_stars?
+      res = GithubAPI::ListStarredRepos(per_page: 20)
+      stars = JSON.parse res
+      stars.each {|star|
+        pulled_star = Gstar::DB[:stars].where(source_id: "github_#{star['id']}").first
+        if pulled_star.nil?
+          Ground.logger.info "sync the star #{star['full_name']}..."
+          InsertStarFromGithub star
+        end
+      }
+    end
+    Ground.logger.info "--End check latest stars from github--#{Time.now}---"
+  end
+
+  def need_sync_stars?
+    res = GithubAPI::ListStarredRepos(per_page: 1)
+    stars = JSON.parse res
+    latest_star = stars.first
+    star = Gstar::DB[:stars].where(source_id: "github_#{latest_star['id']}").first
+    star.nil?
+  end
+  
 end
 

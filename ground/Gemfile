@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'rake'
 gem 'dun'
 gem 'rack'
 gem 'json'
 gem 'rest-client'
 gem 'sequel'
 gem 'sqlite3'
+gem 'whenever', require: false
