@@ -51,7 +51,7 @@ table {
 
 /* app css stylesheet */
 body{
-    font-family: proxima-nova, "Helvetica Neue", Arial, sans-serif;
+    font-family: Arial, sans-serif;
 }
 a:link, a:visited{
     color:#333;
@@ -147,7 +147,7 @@ ol#stars header{
     font-family: chaparral-pro, Palatino, Georgia, "Times New Roman", Times, serif;
 }
 
-ol#stars p{
+ol#stars p, .edit-in-place textarea{
     margin-left: 77px;
     width:31.5%;
     font-size: 14px;
@@ -159,3 +159,18 @@ ol#stars a{
     color:#1b00a6;
 }
 
+.edit-in-place p {
+  cursor: pointer;
+}
+
+.edit-in-place textarea{
+    display: none;    
+}
+
+.edit-in-place.active p {
+  display: none;
+}
+
+.edit-in-place.active textarea {
+  display: inline-block;
+}
