@@ -19,7 +19,7 @@ module Stars
     end
 
     def scan_q_for_search(q)
-      q.scan(/\p{Han}+|\w+/).each {|word|
+      q.scan(/\p{Han}+|\w+/).each_with_index {|word, index|
         stars = QueryStarsByWord(word: word)
         stars.each {|star|
           AccQStarAssoc(star: star, q: q)

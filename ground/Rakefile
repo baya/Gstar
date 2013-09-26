@@ -51,8 +51,9 @@ namespace :maintain do
 
   desc 'build full text serach index'
   task :build_full_text_index => :env do
-    Gstar::DB[:stars].each {|star|
-      BuildInvertedStarIndex(star: star)
+    db = Gstar::DB
+    db[:stars].each {|star|
+      db[:reindex_stars].insert(star_id: star[:id], status: 0)
     }
   end
 
@@ -76,15 +77,17 @@ end
 
 namespace :cron do
   task :check_latest_stars => :env do
+    db = Gstar::DB
     Ground.logger.info "--Start check latest stars from github--#{Time.now}---"
     if need_sync_stars?
-      res = GithubAPI::ListStarredRepos(per_page: 20)
+      res = GithubAPI::ListStarredRepos(per_page: 50)
       stars = JSON.parse res
       stars.each {|star|
-        pulled_star = Gstar::DB[:stars].where(source_id: "github_#{star['id']}").first
+        pulled_star = db[:stars].where(source_id: "github_#{star['id']}").first
         if pulled_star.nil?
           Ground.logger.info "sync the star #{star['full_name']}..."
-          InsertStarFromGithub star
+          star = InsertStarFromGithub star
+          db[:reindex_stars].insert(star_id: star[:id], status: 0)
         end
       }
     end
@@ -98,6 +101,23 @@ namespace :cron do
     star = Gstar::DB[:stars].where(source_id: "github_#{latest_star['id']}").first
     star.nil?
   end
-  
+
+  task :index_stars => :env do
+    Ground.logger.info "--Start index stars from github--#{Time.now}---"
+    db = Gstar::DB
+    db[:reindex_stars].where(status: 0).each {|reindex_star|
+      star = db[:stars].where(id: reindex_star[:star_id]).first
+      BuildInvertedStarIndex star: star
+      db[:reindex_stars].where(id: reindex_star[:id]).update(status: 1)
+    }
+    Ground.logger.info "--End index stars from github--#{Time.now}---"
+  end
+
+  task :clear_reindex_records => :env do
+    Ground.logger.info "--Start clear reindex records from github--#{Time.now}---"
+    Gstar::DB[:reindex_stars].where(status: 1).delete
+    Ground.logger.info "--End clear reindex records from github--#{Time.now}---"
+  end
+
 end
 

@@ -3,7 +3,7 @@
     <li ng-repeat="star in stars" class='star'>
       <article>
 	<header><a href='{{star.html_url}}'><h1>{{star.full_name}}</h1></a></header>
-	<p>{{star.description}}</p>
+	<edit-in-place description='{{star.description}}'></edit-in-place>
       </article>
     </li>
   </ol>
