@@ -14,7 +14,9 @@ angular.module('gStar.directives', []).
 	    scope: {description: '@description'},
 	    template: '<p ng-click="edit()" ng-bind="description"></p><textarea ng-model="description"></textarea>',
 	    link: function( $scope, element, attrs ){
-		var inputElement = angular.element( element.children()[1] );
+		var inputElement = $( element.children()[1] );
+		var textElement = $( element.children()[0] );
+		
 		
 		element.addClass( 'edit-in-place' );
 
@@ -23,12 +25,17 @@ angular.module('gStar.directives', []).
 		$scope.edit = function(){
 		    $scope.editing = true;
 		    element.addClass( 'active' );
+		    var textHeight = textElement.height();
+		    var patchHeight = 4
+		    inputElement.height(textHeight + patchHeight);
 		    inputElement[0].focus();
 		};
 
-		inputElement.prop( 'onblur', function(){
+		inputElement.on( 'blur', function(){
 		    $scope.editing = false;
-		    element.removeClass('active');
+		    $(element).removeClass( 'active' );
+		    // $scope.description = 'OK'
+		    // textElement.text($scope.description);
 		});
 	    }
 	};
