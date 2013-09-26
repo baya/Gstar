@@ -26,7 +26,7 @@ angular.module('gStar.directives', []).
 		    $scope.editing = true;
 		    element.addClass( 'active' );
 		    var textHeight = textElement.height();
-		    var patchHeight = 4
+		    var patchHeight = 16;
 		    inputElement.height(textHeight + patchHeight);
 		    inputElement[0].focus();
 		};
