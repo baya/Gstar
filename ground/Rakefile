@@ -87,7 +87,7 @@ namespace :cron do
         if pulled_star.nil?
           Ground.logger.info "sync the star #{star['full_name']}..."
           star = InsertStarFromGithub star
-          db[:reindex_stars].insert(star_id: star[:id], status: 0)
+          BuildInvertedStarIndex star: star
         end
       }
     end
@@ -100,23 +100,6 @@ namespace :cron do
     latest_star = stars.first
     star = Gstar::DB[:stars].where(source_id: "github_#{latest_star['id']}").first
     star.nil?
-  end
-
-  task :index_stars => :env do
-    Ground.logger.info "--Start index stars from github--#{Time.now}---"
-    db = Gstar::DB
-    db[:reindex_stars].where(status: 0).each {|reindex_star|
-      star = db[:stars].where(id: reindex_star[:star_id]).first
-      BuildInvertedStarIndex star: star
-      db[:reindex_stars].where(id: reindex_star[:id]).update(status: 1)
-    }
-    Ground.logger.info "--End index stars from github--#{Time.now}---"
-  end
-
-  task :clear_reindex_records => :env do
-    Ground.logger.info "--Start clear reindex records from github--#{Time.now}---"
-    Gstar::DB[:reindex_stars].where(status: 1).delete
-    Ground.logger.info "--End clear reindex records from github--#{Time.now}---"
   end
 
 end

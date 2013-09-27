@@ -6,11 +6,3 @@ set :output, File.expand_path(File.join(File.dirname(__FILE__), '../', 'logs', "
 every 1.minutes do
   rake_utf8 "cron:check_latest_stars"
 end
-
-every 1.minutes do
-  rake_utf8 "cron:index_stars"
-end
-
-every 5.minutes do
-  rake_utf8 "cron:clear_reindex_records"
-end

@@ -8,34 +8,46 @@ angular.module('gStar.directives', []).
 	    elm.text(version);
 	};
     }]).
-    directive('editInPlace', [function(){
+    directive('editInPlace', ['$compile', 'SaveStarDescription', function($compile, SaveStarDescription){
 	return {
 	    restrict: 'E',
-	    scope: {description: '@description'},
-	    template: '<p ng-click="edit()" ng-bind="description"></p><textarea ng-model="description"></textarea>',
-	    link: function( $scope, element, attrs ){
+	    scope: {description: "@", starid: "@"},
+	    template: '<p ng-click="edit()" ng-bind="description"></p>'+
+		'<textarea ng-model="description"></textarea>',
+	    link: function( $scope, element, attrs, ctrl ){
 		var inputElement = $( element.children()[1] );
 		var textElement = $( element.children()[0] );
-		
-		
+		var dataCache = {};
+
 		element.addClass( 'edit-in-place' );
 
 		$scope.editing = false;
+
+		inputElement.on('focus', function(){
+		    var txt = $(this).val();
+		    $(this).val('');
+		    $(this).val(txt);
+		})
 
 		$scope.edit = function(){
 		    $scope.editing = true;
 		    element.addClass( 'active' );
 		    var textHeight = textElement.height();
 		    var patchHeight = 16;
+		    dataCache.origDescription = textElement.text();
 		    inputElement.height(textHeight + patchHeight);
-		    inputElement[0].focus();
+		    
+		    inputElement.focus();
 		};
 
 		inputElement.on( 'blur', function(){
 		    $scope.editing = false;
 		    $(element).removeClass( 'active' );
-		    // $scope.description = 'OK'
-		    // textElement.text($scope.description);
+		    if(dataCache.origDescription != $scope.description){
+			var data = {id: $scope.starid, description: $scope.description};
+			var nr = new SaveStarDescription(data)
+			nr.$save();
+		    }
 		});
 	    }
 	};
