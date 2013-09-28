@@ -11,8 +11,8 @@ angular.module('gStar.directives', []).
     directive('editInPlace', ['$compile', 'SaveStarDescription', function($compile, SaveStarDescription){
 	return {
 	    restrict: 'E',
-	    scope: {description: "@", starid: "@"},
-	    template: '<p ng-click="edit()" ng-bind="description"></p>'+
+	    scope: {descriptionhtml: '@', starid: '@', description: '@'},
+	    template: '<p ng-click="edit()" ng-bind-html="descriptionhtml"></p>'+
 		'<textarea ng-model="description"></textarea>',
 	    link: function( $scope, element, attrs, ctrl ){
 		var inputElement = $( element.children()[1] );

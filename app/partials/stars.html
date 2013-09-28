@@ -2,8 +2,9 @@
   <ol id='stars'>
     <li ng-repeat="star in stars" class='star'>
       <article>
-	<header><a href='{{star.html_url}}'><h1>{{star.full_name}}</h1></a></header>
-	<edit-in-place description='{{star.description}}'
+	<header><a href='{{star.html_url}}'><h1 ng-bind-html="star.full_name.replace(re, hit)">></h1></a></header>
+	<edit-in-place descriptionHtml='{{star.description.replace(re, hit)}}'
+		       description='{{star.description}}'
 		       starid='{{star.id}}'>
 	</edit-in-place>
       </article>

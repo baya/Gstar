@@ -144,13 +144,12 @@ ol#stars h1{
 
 ol#stars header{
     margin-left: 77px;
-    font-family: chaparral-pro, Palatino, Georgia, "Times New Roman", Times, serif;
 }
 
 ol#stars p, .edit-in-place textarea{
     margin-left: 77px;
     width:31.5%;
-    font-size: 14px;
+    font-size: 13px;
     padding-top: 2px;
 }
 
@@ -173,4 +172,8 @@ ol#stars a{
 
 .edit-in-place.active textarea {
   display: inline-block;
+}
+
+em{
+    color: #dd4b39;
 }

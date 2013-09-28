@@ -12,7 +12,12 @@ angular.module('gStar.controllers', []).
 	};
     }]).
     controller('StarsCtrl', ['$scope', '$routeParams', 'SearchStars', function($scope, $routeParams, SearchStars){
-	$scope.stars = SearchStars.query({q: $routeParams.q});
+	var q = $routeParams.q;
+	$scope.stars = SearchStars.query({q: q});
+	var ws = q.split(" ").join("|");
+	$scope.re = new RegExp("("+ ws +")","ig");
+	$scope.hit = '<em>$1</em>';
+	
     }]).
     controller('MyCtrl2', [function() {
     }]);
