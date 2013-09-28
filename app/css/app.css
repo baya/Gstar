@@ -159,7 +159,7 @@ ol#stars a{
 }
 
 .edit-in-place p {
-  cursor: pointer;
+  cursor:default;
 }
 
 .edit-in-place textarea{
