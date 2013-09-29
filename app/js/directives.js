@@ -14,6 +14,7 @@ angular.module('gStar.directives', []).
 	    scope: {descriptionhtml: '@', starid: '@', description: '@'},
 	    template: '<p ng-click="edit()" ng-bind-html="descriptionhtml"></p>'+
 		'<textarea ng-model="description"></textarea>',
+	    controller: 'StarsCtrl',
 	    link: function( $scope, element, attrs, ctrl ){
 		var inputElement = $( element.children()[1] );
 		var textElement = $( element.children()[0] );
@@ -47,6 +48,7 @@ angular.module('gStar.directives', []).
 			var data = {id: $scope.starid, description: $scope.description};
 			var nr = new SaveStarDescription(data)
 			nr.$save();
+			$scope.descriptionhtml = nr.description.replace($scope.re, $scope.hit);
 		    }
 		});
 	    }
