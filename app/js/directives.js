@@ -11,14 +11,14 @@ angular.module('gStar.directives', []).
     directive('editInPlace', ['$compile', 'SaveStarDescription', function($compile, SaveStarDescription){
 	return {
 	    restrict: 'E',
-	    scope: {descriptionhtml: '@', starid: '@', description: '@'},
+	    scope: {descriptionhtml: '@', starid: '@', description: '@', new_regex: '&newRegex', hit: '@'},
 	    template: '<p ng-click="edit()" ng-bind-html="descriptionhtml"></p>'+
 		'<textarea ng-model="description"></textarea>',
-	    controller: 'StarsCtrl',
 	    link: function( $scope, element, attrs, ctrl ){
 		var inputElement = $( element.children()[1] );
 		var textElement = $( element.children()[0] );
 		var dataCache = {};
+		var regex = $scope.new_regex();
 
 		element.addClass( 'edit-in-place' );
 
@@ -48,7 +48,7 @@ angular.module('gStar.directives', []).
 			var data = {id: $scope.starid, description: $scope.description};
 			var nr = new SaveStarDescription(data)
 			nr.$save();
-			$scope.descriptionhtml = nr.description.replace($scope.re, $scope.hit);
+			$scope.descriptionhtml = nr.description.replace(regex, $scope.hit);
 		    }
 		});
 	    }
