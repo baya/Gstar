@@ -1,5 +1,5 @@
-#ground_lib = '/Users/jim/Projects/ground/lib'
-ground_lib = '/Users/jiangguimin/Projects/ground/lib'
+ground_lib = '/Users/jim/Projects/ground/lib'
+# ground_lib = '/Users/jiangguimin/Projects/ground/lib'
 $: << ground_lib
 
 require 'bundler'
