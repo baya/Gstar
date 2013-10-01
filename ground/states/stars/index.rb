@@ -3,11 +3,12 @@ module Stars
   class Index < Ground::State
 
     set :db, Ground.db
+    set :limit, 10
 
     def call
       scan_q_for_search params[:q]
       stars = find_stars params[:q]
-      stars = stars.all
+      stars = stars.limit(limit, params[:start].to_i).all
       clear_q_star_assocs params[:q]
       json stars.to_json
     end

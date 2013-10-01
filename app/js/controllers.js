@@ -13,11 +13,11 @@ angular.module('gStar.controllers', []).
     }]).
     controller('StarsCtrl', ['$scope', '$routeParams', 'SearchStars', function($scope, $routeParams, SearchStars){
 	var q = $routeParams.q;
-	$scope.stars = SearchStars.query({q: q});
 	var ws = q.split(" ").join("|");
-	$scope.re = new RegExp("("+ ws +")","ig");
+	$scope.newRegex = function(){
+	    return new RegExp("("+ ws +")","ig");
+	}
+	$scope.regex = $scope.newRegex();
 	$scope.hit = '<em>$1</em>';
-	
-    }]).
-    controller('MyCtrl2', [function() {
+	$scope.stars = SearchStars.query($routeParams);
     }]);

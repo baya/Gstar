@@ -1,11 +1,13 @@
-<div class='content'>
+<div class='content' ng-conroller='StarsCtrl'>
   <ol id='stars'>
     <li ng-repeat="star in stars" class='star'>
       <article>
-	<header><a href='{{star.html_url}}'><h1 ng-bind-html="star.full_name.replace(re, hit)">></h1></a></header>
-	<edit-in-place descriptionHtml='{{star.description.replace(re, hit)}}'
+	<header><a href='{{star.html_url}}'><h1 ng-bind-html="star.full_name.replace(regex, hit)">></h1></a></header>
+	<edit-in-place descriptionHtml='{{star.description.replace(regex, hit)}}'
 		       description='{{star.description}}'
-		       starid='{{star.id}}'>
+		       starid='{{star.id}}'
+		       new_regex="newRegex()"
+		       hit='{{hit}}'>
 	</edit-in-place>
       </article>
     </li>
