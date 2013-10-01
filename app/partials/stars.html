@@ -2,7 +2,7 @@
   <ol id='stars'>
     <li ng-repeat="star in stars" class='star'>
       <article>
-	<header><a href='{{star.html_url}}'><h1 ng-bind-html="star.full_name.replace(regex, hit)">></h1></a></header>
+	<header><a ng-href='{{star.html_url}}'><h1 ng-bind-html="star.full_name.replace(regex, hit)">></h1></a></header>
 	<edit-in-place descriptionHtml='{{star.description.replace(regex, hit)}}'
 		       description='{{star.description}}'
 		       starid='{{star.id}}'
@@ -12,4 +12,10 @@
       </article>
     </li>
   </ol>
+  <ul class="pagination" ng-hide="hide">
+    <li><a href="#">&laquo;</a></li>
+    <li ng-repeat="page in pages"><a ng-bind="page.num" href="{{page.href}}" ng-class="page.current"></a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+</ul>
 </div>

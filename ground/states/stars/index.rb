@@ -8,9 +8,11 @@ module Stars
     def call
       scan_q_for_search params[:q]
       stars = find_stars params[:q]
-      stars = stars.limit(limit, params[:start].to_i).all
+      start = params[:start].to_i
+      total = stars.count
+      stars = stars.limit(limit, start).all
       clear_q_star_assocs params[:q]
-      json stars.to_json
+      json({stars: stars, limit: limit, start: start, total: total, total: total}.to_json)
     end
 
     private
