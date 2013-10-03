@@ -17,7 +17,7 @@ gstar, 帮助我们搜索在github上star过的项目
 
 6. rake maintain:pull_stars_from_github #将你star过的项目从github拉到本地数据库
 
-7. whenever --update                    # 启动定时任务，每分钟检查一次你是否有新的star项目x
+7. whenever --update                    # 启动定时任务，每分钟检查一次你是否有新的star项目
 
 8. rackup -p 9292
 
