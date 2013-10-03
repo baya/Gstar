@@ -9,3 +9,4 @@ gem 'rest-client'
 gem 'sequel'
 gem 'sqlite3'
 gem 'whenever', require: false
+gem 'ground', git: 'git://github.com/baya/ground.git', ref: 'bd4f89f0073'
