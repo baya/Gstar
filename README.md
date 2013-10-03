@@ -42,7 +42,7 @@ gstar的搜星:
 
 比如说我给karmi/tire这个项目的描述加上"搜索"，那么我就可以通过搜索"搜索"找到tire这个项目了。
 
-![](/images/Sinp20131004_3.png)
+![](/images/Snip20131004_3.png)
 
 ### 3.自动更新starred projects
 Gstar自带一个定时任务，每一分钟会去github那检查是否有新的stars，如果有就会拉到本地，建立索引，方便你以后搜索使用。
