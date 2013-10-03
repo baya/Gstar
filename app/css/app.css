@@ -101,6 +101,8 @@ a{
 .btn-default{
     background-color: #ffffff;
     border-color:#cccccc;
+    height: 34px;
+    margin-bottom: 3px;
 }
 
 .clear{clear:both;}
@@ -118,7 +120,8 @@ ol {
 
 #main-input{
     width:560px;
-    height:22px;
+    height:32px;
+    font:18px arial,sans-serif;
 }
 
 ol#stars{
