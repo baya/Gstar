@@ -13,7 +13,7 @@ gstar, 帮助我们搜索在github上star过的项目
 
 5. cp config/github.example.yml config/github.yml
 
-在config/github.yml里有三个配置，其中access_token可以不填写，login和password是你用来登录github的用户名和密码，填好login和password后，运行下面的rake任务:
+    在config/github.yml里有三个配置，其中access_token可以不填写，login和password是你用来登录github的用户名和密码，填好login和password后，运行下面的rake任务,
 
 6. rake maintain:pull_stars_from_github #将你star过的项目从github拉到本地数据库
 
