@@ -27,7 +27,7 @@ gstar, 帮助我们搜索在github上star过的项目
 
 ## 功能特点
 
-### 准确快速的搜索
+### 1.准确快速的搜索
 
 github自带的搜星功能不是特别好用，比如说我想找出我收藏的(github的标星功能对我来说就是收藏)与markdown有关的项目，使用github自带的搜星功能只能找到一个叫miclle/Markdown-Editor的项目，因为github是通过项目的名字进行搜索，这导致很多与markdwon有关的项目被忽略了，但是使用Gstar搜索markdwon能找到11个与markdown有关的项目，因为Gstar对项目名和项目描述都进行搜索，这样比github更准确些。
 
@@ -38,13 +38,13 @@ github的搜星:
 gstar的搜星:
 ![](/images/Snip20131003_2.png)
 
-### 可以修改项目的描述(description)，实现类似于打标签的功能
+### 2.可以修改项目的描述(description)，实现类似于打标签的功能
 
 比如说我给karmi/tire这个项目的描述加上"搜索"，那么我就可以通过搜索"搜索"找到tire这个项目了。
 
 ![](/images/Sinp20131003_4.png
 
-### 自动更新starred projects
+### 3.自动更新starred projects
 Gstar自带一个定时任务，每一分钟会去github那检查是否有新的stars，如果有就会拉到本地，建立索引，方便你以后搜索使用。
 
 
