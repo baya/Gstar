@@ -80,7 +80,7 @@ namespace :cron do
     db = Gstar::DB
     Ground.logger.info "--Start check latest stars from github--#{Time.now}---"
     if need_sync_stars?
-      res = GithubAPI::ListStarredRepos(per_page: 50)
+      res = GithubAPI::ListStarredRepos(per_page: 100)
       stars = JSON.parse res
       stars.each {|star|
         pulled_star = db[:stars].where(source_id: "github_#{star['id']}").first
