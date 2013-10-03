@@ -29,7 +29,7 @@ gstar, 帮助我们搜索在github上star过的项目
 
 ### 准确快速的搜索
 
-github自带的搜星功能不是特别好用，比如说我想找出我收藏的(github的标星功能对我来说就是收藏)和markdown有关的项目，使用github自带的搜星功能只能找到一个叫miclle/Markdown-Editor的项目，因为github是通过项目的名字进行搜索，这导致很多与markdwon有关的项目被忽略了，使用Gstar搜索markdwon能找到11个与markdown有关的项目，因为Gstar对项目名和项目描述进行搜索，这样比github更准确些。
+github自带的搜星功能不是特别好用，比如说我想找出我收藏的(github的标星功能对我来说就是收藏)与markdown有关的项目，使用github自带的搜星功能只能找到一个叫miclle/Markdown-Editor的项目，因为github是通过项目的名字进行搜索，这导致很多与markdwon有关的项目被忽略了，但是使用Gstar搜索markdwon能找到11个与markdown有关的项目，因为Gstar对项目名和项目描述都进行搜索，这样比github更准确些。
 
 github的搜星:
 
