@@ -27,6 +27,7 @@ namespace :maintain do
         pulled_star = Gstar::DB[:stars].where(source_id: "github_#{star['id']}").first
         if pulled_star.nil?
           InsertStarFromGithub star
+	  BuildInvertedStarIndex star: star
         end
       }
       puts page
