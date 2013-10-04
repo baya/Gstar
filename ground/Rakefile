@@ -19,19 +19,21 @@ namespace :maintain do
   desc 'pull stars from github'
   task :pull_stars_from_github => :env do
     page = 0
+    total_size = 0
     loop do
       page += 1
       res = GithubAPI::ListStarredRepos(page: page)
       stars = JSON.parse res
+      total_size += stars.size
       stars.each {|star|
         pulled_star = Gstar::DB[:stars].where(source_id: "github_#{star['id']}").first
         if pulled_star.nil?
-          InsertStarFromGithub star
+          star = InsertStarFromGithub star
 	  BuildInvertedStarIndex star: star
         end
       }
-      puts page
       break if stars.size == 0
+      puts "已经同步#{total_size}个项目..."
     end
    end
 
@@ -44,7 +46,7 @@ namespace :maintain do
       pulled_star = Gstar::DB[:stars].where(source_id: "github_#{star['id']}").first
       if pulled_star.nil?
         Ground.logger.info "sync the star #{star['full_name']}..."
-        InsertStarFromGithub star
+        star = InsertStarFromGithub star
 	BuildInvertedStarIndex star: star
       end
     }
