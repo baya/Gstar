@@ -44,6 +44,7 @@ namespace :maintain do
       if pulled_star.nil?
         Ground.logger.info "sync the star #{star['full_name']}..."
         InsertStarFromGithub star
+	BuildInvertedStarIndex star: star
       end
     }
     Ground.logger.info "--End sync stars from github--#{Time.now}---"
